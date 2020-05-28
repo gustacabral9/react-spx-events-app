@@ -1,0 +1,23 @@
+.detail-event {
+  font-size: 50px;
+  font-weight: 700;
+}
+.main-publish {
+  background-color: rgba(184, 169, 200, 0.2);
+  border-radius: 4px;
+}
+.detail-info {
+  color: fff;
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-top: 1vmax;
+}
+.btn-publish {
+  background-color: #d1410c;
+  color: #fff;
+  transition: 0.2s ease-in;
+}
+.btn-publish:hover {
+  background-color: #f05537;
+  color: #fff;
+}
