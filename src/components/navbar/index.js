@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import rocket from "./rocket.svg";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,6 +7,13 @@ import "./navbar.css";
 function Navbar() {
   const dispatch = useDispatch();
   const [search, setSearch] = useState();
+  function doSearch() {
+    if (search !== 0) {
+      dispatch({ type: "SEARCH", search: search });
+    }
+  }
+  function doClear() {}
+
   return (
     <div>
       {useSelector((state) =>
@@ -35,7 +42,15 @@ function Navbar() {
               className="collapse colap-nav-logged  navbar-collapse ml-md-4 ml-sm-0 "
               id="navbarTogglerDemo01"
             >
-              <form className="form-inline d-flex ml-2 w-75">
+              <form
+                className="form-inline d-flex ml-2 w-75"
+                onChange={doSearch}
+                onKeyUp={(e) =>
+                  e.key === "Backspace"
+                    ? dispatch({ type: "SEARCH", search: "" })
+                    : null
+                }
+              >
                 <input
                   className="form-control mr-sm-2 w-75 "
                   type="search"
@@ -61,7 +76,7 @@ function Navbar() {
                     to="/user/publish"
                     className="nav-link  text-white font-weight-bold"
                   >
-                    Publicar Evento {search}
+                    Publicar Evento
                   </Link>
                 </li>
                 <li className="nav-item active nav-new-event mx-1">

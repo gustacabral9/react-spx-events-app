@@ -3,21 +3,24 @@ import "./home.css";
 import Navbar from "../../components/navbar";
 import firebase from "../../config/firebase";
 import CardEvent from "../../components/cardevent";
+import { useSelector, useDispatch } from "react-redux";
 function Home() {
   const [events, setEvents] = useState([]);
   let listEvents = [];
-
+  const searchSelector = useSelector((state) => state.search);
   useEffect(() => {
     firebase
       .firestore()
       .collection("events")
       .get()
-      .then(async (r) => {
+      .then((r) => {
         r.docs.forEach((doc) => {
-          listEvents.push({
-            id: doc.id,
-            ...doc.data(),
-          });
+          if (doc.data().title.indexOf(searchSelector) >= 0) {
+            listEvents.push({
+              id: doc.id,
+              ...doc.data(),
+            });
+          }
         });
         setEvents(listEvents);
       });
@@ -25,7 +28,7 @@ function Home() {
   return (
     <>
       <Navbar />
-      <h2 className="header-title">Proximos Eventos: </h2>
+      <h2 className="header-title">Proximos Eventos:</h2>
       <div className="row">
         {events.map((item) => (
           <CardEvent
