@@ -12,7 +12,6 @@ function Navbar() {
       dispatch({ type: "SEARCH", search: search });
     }
   }
-  function doClear() {}
 
   return (
     <div>
