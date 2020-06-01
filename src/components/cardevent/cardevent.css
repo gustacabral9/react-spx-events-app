@@ -1,3 +1,28 @@
 .card-event {
   width: 18rem;
 }
+.card-datecolor {
+  color: #d1410c;
+  font-size: smaller;
+}
+
+.conteiner-2 {
+  margin: 20px 20px;
+}
+
+h5 {
+  font-size: medium;
+}
+.img-card-width {
+  max-height: 175px;
+  min-width: 100%;
+}
+.main-cards {
+  text-decoration: none;
+  color: #000000;
+}
+.main-cards:hover {
+  text-decoration: none;
+  color: #000000;
+  box-shadow: #000000;
+}

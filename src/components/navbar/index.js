@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import rocket from "./rocket.svg";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -6,6 +6,7 @@ import "./navbar.css";
 
 function Navbar() {
   const dispatch = useDispatch();
+  const [search, setSearch] = useState();
   return (
     <div>
       {useSelector((state) =>
@@ -40,6 +41,7 @@ function Navbar() {
                   type="search"
                   placeholder="Procurar evento"
                   aria-label="Search"
+                  onChange={(e) => setSearch(e.target.value)}
                 />
                 <button
                   className="btn my-2 my-sm-0 nav-new-event text-white"
@@ -59,7 +61,7 @@ function Navbar() {
                     to="/user/publish"
                     className="nav-link  text-white font-weight-bold"
                   >
-                    Publicar Evento
+                    Publicar Evento {search}
                   </Link>
                 </li>
                 <li className="nav-item active nav-new-event mx-1">

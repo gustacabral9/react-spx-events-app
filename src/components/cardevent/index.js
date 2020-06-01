@@ -1,25 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./cardevent.css";
+import firebase from "../../config/firebase";
 // import { Container } from './styles';
+function CardEvent({ key, img, title, data, hour }) {
+  const [urlBanner, setUrlBanner] = useState();
 
-function CardEvent() {
+  useEffect(
+    (a) => {
+      firebase
+        .storage()
+        .ref(`banners/${img}`)
+        .getDownloadURL()
+        .then((url) => setUrlBanner(url));
+    },
+    [img, urlBanner]
+  );
+
   return (
-    <div className="conteiner">
-      <div class="card card-event">
-        <img
-          src="https://via.placeholder.com/100x50"
-          class="card-img-top"
-          alt="..."
-        />
+    <a href="#1" className="main-cards">
+      <div class="card card-event mx-2 my-2 ">
+        <img src={urlBanner} class="card-img-top img-card-width" alt="..." />
         <div class="card-body">
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+          <h5 class="card-title font-weight-bold text-center">{title}</h5>
+          <h5 class="card-title text-center font-weight-bold card-datecolor">
+            às {hour} do dia {data}
+          </h5>
         </div>
       </div>
-    </div>
+    </a>
   );
 }
 

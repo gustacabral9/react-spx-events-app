@@ -57,6 +57,7 @@ function PublishEvent() {
               .collection("events")
               .add({
                 title: eventTitle,
+                banner: bannerName,
                 type: eventType,
                 company: company,
                 data: data,
@@ -101,6 +102,7 @@ function PublishEvent() {
               .collection("events")
               .add({
                 title: eventTitle,
+                banner: bannerName,
                 type: eventType,
                 company: company,
                 data: data,
@@ -134,6 +136,9 @@ function PublishEvent() {
   }
   return (
     <>
+      {useSelector((state) =>
+        state.isSignin === 0 ? <Redirect to="/signin" /> : null
+      )}
       <Navbar />
       {save === 1 ? <Redirect to="/user/events" /> : null}
       <div className="jumbotron">
