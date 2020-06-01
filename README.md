@@ -9,10 +9,10 @@
 - 🔑 Login persistente salvo no storage do browser.
 - 📑 Criação de eventos por usuarios cadastrados.
 - 📜 Listagem de eventos futuros.
+- 🔍 Pesquisa de eventos.
 
 ## Em Breve
 
-- 🔍 Pesquisa de eventos.
 - 📋 Gerenciamento de eventos.
 - 📖 Pagina de detalhes do evento.
 
