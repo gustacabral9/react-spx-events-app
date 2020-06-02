@@ -50,7 +50,7 @@ function PublishEvent() {
       const bannerName = randomName + banner.name;
       if (eventType === "Online") {
         await storage
-          .ref(`images/${bannerName}`)
+          .ref(`banners/${bannerName}`)
           .put(banner)
           .then(() =>
             db

@@ -15,7 +15,10 @@ function Home() {
       .get()
       .then((r) => {
         r.docs.forEach((doc) => {
-          if (doc.data().title.indexOf(searchSelector) >= 0) {
+          if (
+            doc.data().title.indexOf(searchSelector) >= 0 ||
+            doc.data().data.indexOf(searchSelector) >= 0
+          ) {
             listEvents.push({
               id: doc.id,
               ...doc.data(),
