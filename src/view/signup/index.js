@@ -41,7 +41,10 @@ function Signup() {
     <div className="conteiner">
       <Navbar />
       <div className=" d-flex align-items-center signin-content">
-        <form className="form-signin mx-auto  col-sm-4">
+        <form
+          className="form-signin mx-auto  col-sm-4"
+          onKeyUp={(e) => (e.key === "Enter" ? doSignup() : null)}
+        >
           <div className="text-center ">
             <img alt="logo spx" src={rocket} width="50" className="my-2"></img>
             <h1 className="h3 mb-3 font-weight-bold text-dark">
